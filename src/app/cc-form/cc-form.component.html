@@ -1,6 +1,6 @@
 <div class="form">
     <mat-card-title>Payment App</mat-card-title>
-<form [formGroup]="form">
+<form [formGroup]="form" type="POST">
 <div class="long-field">
 
 <mat-form-field>
@@ -24,7 +24,7 @@
     <input matInput id="amount" #input min="0" placeholder="Amount" formControlName="amount">
 </mat-form-field>
 
-<button mat-flat-button color="primary">Send payment <mat-icon aria-hidden="false">flight_takeoff</mat-icon></button>
+<button mat-flat-button color="primary" (click)="payButton()">Send payment <mat-icon aria-hidden="false">flight_takeoff</mat-icon></button>
 
 </div>
 </form></div>

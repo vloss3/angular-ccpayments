@@ -13,6 +13,8 @@ import { CcFormComponent } from './cc-form/cc-form.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatCardModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

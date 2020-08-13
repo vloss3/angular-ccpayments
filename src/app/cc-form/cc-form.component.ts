@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ajax } from 'rxjs/ajax';
+import { of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'cc-form',
@@ -9,7 +12,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class CcFormComponent implements OnInit {
 
   form: FormGroup;
-
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -49,16 +52,26 @@ export class CcFormComponent implements OnInit {
   get amount() {
     return this.form.get('amount')
   }
-}
 
-export class FormFieldErrorExample {
-  form = new FormControl('', [Validators.required, Validators.email]);
+  payButton() {
+    const users = ajax({
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      method: 'POST',
+      body: {
+        creditCardNumber: this.form.get('creditCardNumber'),
+        cardholder: this.form.get('cardholder'),
+        expirationDate: this.form.get('expirationDate'),
+        securityCode: this.form.get('securityCode'),
+        amount: this.form.get('amount')
+      }
 
-  getErrorMessage() {
-    if (this.form.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.form.hasError('email') ? 'Not a valid email' : '';
+    }).pipe(
+      map(res => console.log("1", res)),
+      catchError(error => {
+        console.log("error: ", error);
+        return of(error);
+      })
+    );
   }
+
 }
