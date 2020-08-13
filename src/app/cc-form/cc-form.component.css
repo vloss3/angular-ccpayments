@@ -1,0 +1,31 @@
+.form {
+ padding: 15px;
+}
+
+.mat-form-field {
+    display: block;
+    min-width: 400px;
+}
+
+.expMonth {
+    width: 100px !important;
+}
+
+.mat-card-title {
+    padding: 15px 15px 35px 15px;
+    text-align: center;
+}
+
+#cardHolder, #ccNumber {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+    font-size: 18px;
+    background: none;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.input[type="month"] {
+    width: 50px !important;
+}
